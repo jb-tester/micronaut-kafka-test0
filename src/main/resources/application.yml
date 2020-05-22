@@ -1,0 +1,19 @@
+---
+micronaut:
+  application:
+    name: micronaut-kafka-test0
+
+---
+kafka:
+  bootstrap:
+    servers: localhost:9092
+  producers:
+    messages-producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  consumers:
+    messages-group:
+      value-deserializer: org.apache.kafka.common.serialization.StringSerializer
+my:
+  messages:
+    extra-topic: message-counter
