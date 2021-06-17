@@ -5,7 +5,7 @@ import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.Topic;
 import io.micronaut.messaging.annotation.Body;
 
-@KafkaClient("messages-producer") // no reference to producer id
+@KafkaClient("messages-producer") // no reference to producer id - https://youtrack.jetbrains.com/issue/IDEA-241621
 public interface MyMessageProducer {
 
     String TOPIC2 = "my-new-messages";
@@ -15,7 +15,7 @@ public interface MyMessageProducer {
 
     void sendMessage(@Topic String topic, @KafkaKey String messageKey, String message);
 
-    @Topic(TOPIC2)  // usage in listener is not navigated by this gutter
+    @Topic(TOPIC2)  // usage in listener is not navigated by this gutter - https://youtrack.jetbrains.com/issue/IDEA-241616
     void sendNewMessage(@KafkaKey String messageKey, @Body String message );
 
     void sendNewMessage(@Topic String topic, @KafkaKey String messageKey, String message);
